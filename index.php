@@ -1,7 +1,7 @@
 <?php require_once 'admin/db_con.php'; 
 session_start();
 if(isset($_SESSION['user_login'])){
-	header('Location: index.php');
+	header('Location: admin/index.php');
 }
 	if (isset($_POST['login'])) {
 		$nombreUsuario= $_POST['nombreUsuario'];
@@ -23,12 +23,12 @@ if(isset($_SESSION['user_login'])){
 				if ($row['contraseña']==sha1(md5($contraseña))) {
 					if ($row['estado']=='Activo') {
 						$_SESSION['user_login']=$nombreUsuario;
-						header('Location: index.php');
+						header('Location: admin/index.php');
 					}else{
 						$estado_inactivo= "Su estado está inactivo, póngase en contacto con el administrador o el soporte";
 					}
 				}else{
-					$worngContraseña= "Contraseña o Usurario Incorrectos";	
+					$worngContraseña= "Contraseña o Usuario Incorrectos";	
 				}
 			}else{
 				$nombreUsuarioorr= "Nombre de usuario no existe";
